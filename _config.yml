@@ -52,17 +52,16 @@ author:
   # twitter:             <username>
 
 # Add links to the sidebar.
-# menu:
-#   - title:             이전 블로그 내용
-#     url:               /old/
-#   - title:             IoT
-#     url:               /iot/
-#   - title:             Network
-#     url:               /network/
-#   - title:             Development
-#     url:               /development/
-#   - title:             About
-#     url:               /about/
+menu:
+  - title:             Previous Blog
+    url:               /old/
+  - title:             IoT
+    url:               /iot/
+  - title:             Network
+    url:               /network/
+  - title:             Development
+    url:               /development/
+
 
 # Add links to the footer.
 # Typically you'll want to link to your cookie- or privacy policy (if appliable), etc..
