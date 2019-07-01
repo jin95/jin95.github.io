@@ -1,0 +1,143 @@
+---
+layout: post
+title : "03장 ~ 04장"
+categories: [old]
+tags: []
+description: >
+---
+<pre><q cite="">
+  SOW = statement of work (작업명세서)
+  RFP = Request For Proposal(주문한 사람이만드는것 제안요청서)
+  COCOMO = Constructive Cost Model
+  WBS = Work Breakdown Structure
+  CPM = Critical Path Method
+  R & R = Role and Responsibility
+  PM = 프로젝트 매니저
+  PL = 프로젝트 리더
+  CEO = chief executive officer
+  CTO = chief technical officer (기술경영자)
+  MISRA = Motor Industry Software reliability Association
+  SRS = Software Requirement specification
+  Stakeholders = 이해관계자
+  CMM = Capability Maturity Model
+</q>
+
+    <h2>3. Project Management & Planning</h2>
+    <ul><li><h4>3.1 프로젝트 범위</h4></li>
+    소프트웨어공학과 프로그래밍의 차이는 관리된 프로젝트다.
+    어려운일은 일의 규모와 필요한 노력을 예측하는 일이다.
+    중요한 요소는 계획세우기, 인력관리, 위험관리이다.
+
+    <li><h4>3.2 노력 추정</h4></li>
+    COCOMO Cost Modeling
+    프로젝트 경험에 기초한 경험적 모델
+    특정 소프트웨어 공급 업체와 관련이없는, 잘 문서화되고 독립적인 모델
+
+    COCOMO2 : 소프트웨어 개발, 재사용 등에 대한 다양한 접근 방식
+    차이점은
+    COCOMO1는 LOC를 고려
+    COCOMO2는 1단계 프로토타입을 만들어 화면수나 출력수 개수를세고
+    2단계에서 규모측정을위하여 FP를 계산, 3단계에서 COCOMO1모델처럼 LOC에 의하여 소요되는 노력 추정
+    MM = 비용 / 생산성
+
+    FP = Function Point(기능 점수)
+    기능의 수는 소프트웨어의 크기와 복잡성에 영향을 미친다.
+    FP = GFP X PCA (GFP=Gross function point, PCA=Processing complexity adjustment)총기능점수,보정계수
+    E = FP / SW Productivity  (점수 / 생산성)
+
+    <li><h4>3.3 일정 계획</h4></li>
+    간트차느는 CPM 네트워크로부터 만들수있다. 칸트 차트는 자원의 활용을 계획활 때 도움을 주며
+    CMP 네트워크는 작업이 적시에 진행되는지 점검 하는데 사용된다.
+    slack time(최대한으로 연장되었을 때의 예비시간)
+
+    <li><h4>3.4 조직 계획</h4></li>
+    책임 프로그래머 팀 구성
+    관리자의 명령을 따라 일하고 결과를 보고하는 방식(모든 의사 결정이 한사람에의해 이루어짐)소규모에 적합
+    Egoless Team
+    개인적 요소가 최소화되어 품질이 향상 될 수 있는 방법(모두 공동의 일) 대규모의 문제에는 부적합
+    Hierarchical Team (계층적팀구성) 프로젝트 리더를 둠 ,중간계층과
+
+    DevOps : Development + Operation (개발 + 운영) - 기술과 시장의 빠른 변화에 대응하기 위한 최신 개발/운영 트렌드
+    마이크로 서비스 아키텍처 기반 클라우드의 SaaS
+    그 예로 구글 Docs, Gmail
+
+    기능조직 CEO에 의한방법과 CEO아래에(기술경영자) CTO 를 둬서 개발관리를 따로 맡게함
+
+    Risk Monitoring
+    제품,프로세스 및 비즈니스 위험에 대한 가정이 변경되지 않았는지 확인하는 프로세스
+    </ul>
+    <h2>4. Requirement Analysis</h2>
+    <ul><li><h4>4.1 Requirement</h4></li>
+      시스템이 무엇을 제공해야하는지 how가아니라 what
+      프로젝트 실패의 주요 원인중 하나는 부적당한 요구사항이다.
+
+      요구사항의 바람직한 속성
+      Unambiguous
+      Correct
+      Complete
+      Consistent
+      Feasible
+      Traceable
+
+      요구 사항 엔지니어링 프로세스가 필요하다.
+
+      RE (Requirement engineering) : 요구 사항 파악, 분석, 문서화 및 검증과 관련된 활동
+
+      요구사항의 유형에는 User requirements 와 System requirements가 있다
+      시스템 요구사항은 기능적요구와 비기능적 요구를 가진다.
+
+      기능적요구 : 소프트웨어시스템안의 서비스, 입출력
+      비기능적요구 : Quality requirements, System constraints(규제 관점), External constraints(표준)
+
+      Non-functional Reqs: Quality
+      Speed, Size, Ease of use, Reliability, Robustness, Portability(입출력이아니라 제약사항)
+
+      <li><h4>4.2 Requirement Elicitation(요구 추출)</h4></li>
+      고객, 도메인전문가, 이해관계자, 사용자, 역공학
+
+      추출 기술
+      고객 프레젠테이션 (workshop 매우 효과적임)
+      문헌 조사
+      설문
+      브레인 스토밍 : 공동 작업 기술 중 하나 , 비판이나 토론 허용X
+      프로토타이핑 : 시스템 외부에서 관찰 가능한 모든 행동을 보여줌
+
+      <li><h4>4.3 Domain Analysis</h4></li>
+      배경정보에 대해 알아 가는 것
+      도메인 정의, 도메인 개념, 도메인 사전 작성
+
+      <li><h4>4.4 Use Case</h4></li>
+      요구 사항에 필요한 지식을 수집한후에 구조화,명확하게 모델링
+      Actor - 누가 시스템을 사용하기 원하는지
+      Use-case - 유저가 시스템을 사용하는 용도
+      System scope 로 이루어짐
+
+      <li><h4>4.5 SRS</h4></li>
+      <strong>Software Requirement Specification</strong>
+      시스템 개발자에게 요구되는 사항에 대한 공식 명세서
+
+      모든 이해관계자에게 승인을 받아야함.
+      특정이해관계자가 불이익을 당할수 있기에 모두의 동의를 받아야함
+
+      개념적 UI모델과 데이터 모델에 매핑
+
+      SRS 기본 요소
+      <strong>
+      소개
+      사용자 요구사항
+      시스템 요구사항
+      인수 조건(Acceptance testing)
+      </strong>
+
+      <li><h4>4.X Requirement Validation</h4></li>
+      요구사항 검토
+      연습 , 조사 , 공식적리뷰
+
+      프로토타이핑
+      시스템의 실행 가능 모델을 사용하여 요구 사항 확인
+
+      Test-case generation
+      테스트 가능성을 확인하기 위한 요구 사항 테스트 개발
+      BDD(behavior driven development)
+</ul>
+</pre>

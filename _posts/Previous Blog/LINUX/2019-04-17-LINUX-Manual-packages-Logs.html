@@ -1,0 +1,215 @@
+---
+layout: post
+title: "06 Manual-packages-Logs"
+categories: [old]
+tags: []
+description: >
+---
+<h1>Linux</h1>
+<h2>06 Manual-packages-Logs</h2>
+<pre>
+  <ul>
+  대부분 리눅스 명령어는 관련된 메뉴얼 페이지를 가지고있다. 주로 manpage로 알려짐
+  man 커맨드를 활용하여 볼 수 있다.
+
+  <li>Format of a Manual page</li>
+  NAME : name and single-line reason for the command
+  SYNOPSIS: possible arguments
+  DESCRIPTION : fuller explanation of the command
+  OPTIONS
+  FILES : any files the command needs
+  ENVIRONMENT : pertinent environment variables
+  BUGS, AUTHORS, SEE ALSO
+  로 이루어져 있다.
+
+  <li>Section of Manual</li>
+  맨 페이지는 메뉴얼 섹션에 있으며 사용자 명령은 섹션 1에 있다.
+  다른 섹션에는 같은 이름의 페이지가 포함될수 있다.
+  ex)
+  섹션 1의 passwd 페이지는 /usr/bin/passwd 커맨드이다
+  passwd(1) : brought by "man 1 passwd"
+  섹션 5의 passwd 페이지는 /etc/passwd 파일이다.
+
+  <li>Manual Section Numbering</li>
+  섹션 설명
+  1 일반 명령
+  2 시스템 콜
+  3 라이브러리 기능
+  4 특수 파일
+  5 파일 형식 및 규칙
+  6 게임 및 화면 보호기
+  7 기타
+  8 시스템 관리 명령 및 데몬
+
+  <li>man 명령어의 옵션</li>
+  -t 옵션은 메뉴얼 페이지의 포스트스크립트 버전을 만든다
+  -K (대문자 K) 전체 메뉴얼의 내용을 통해 서치, 오래걸리고 너무 많은 결과가 나오기에 유용하지 않음
+  ex)
+  man passwd 명령은 첫 번째 섹션의
+  man -a passwd : 섹션상관없이 passwd 가지는 모든 메뉴얼페이지를 보여줌
+  man -f passwd : passwd 이름의 섹션을 모두 보여주고 간단한 한 줄 설명
+  (whatis 명령과 같다)
+  man –k passwd : passw 키워드를 포함하는 모든 섹션 이름과 페이지를 찾음
+  (apropos 명령과 같다)
+
+  <li>올바른 매뉴얼 페이지 찾기</li>
+  때로는 명령의 설명서가 예상 한 곳에 있지 않고
+  관련 명령을 한 페이지에 그룹화 할 수 있다.
+  예를들어 gzip, gunzip, zcat은 하나의 매뉴얼 페이지에 있다.
+
+  <li>쉘안에서 구현된 명령어</li>
+  쉘의 맨페이지에 문서화되어있는 쉘기반 명령어
+  help 명령어를 통해서 쉘안에 함수의 설명을 볼 수 있다.
+
+  <li>메뉴얼 페이지의 위치</li>
+  맨 페이지는 파일 시스템에 저장되어있음
+  man -aw 로 지정된 이름의 모든 맨 페이지 위치 표시
+  맨 페이지의 일반적인 위치는 /usr/man 이나 /usr/share/man
+
+  <li>Info pages</li>
+  GNU의 문서화 시스템
+  매뉴얼페이지
+
+  /usr/share/doc의 문서
+  가끔 주요 프로그램의 문서를 man or info page로 사용할 수 없다
+  일반적으로 plain text
+  가끔 HTML
+
+  /usr/share/doc 안에 있는 문서는 대부분 패키지의 사용자 관리가 아닌
+  패키지의 시스템 관리에만 관련된 정보이다.
+  -설치, 설치방법, 라이센스, 변경 로그
+  때로는 다른 곳보다 사용자 친화적 인 문서
+  - HTML 도움말은 대화 형 응용 프로그램에서보다 일반적이며 전통적인 유닉스 명령에서는 매우 드뭅니다.
+  - 다른 플랫폼에서 이식 된 프로그램은 종종
+  설명서 페이지가 아닌 "/ usr / share / doc"에있는 설명서
+
+<hr></hr>
+
+  <li>Package Managemnet</li>
+  패키지 매니지 시스템 - 프로세스들을 자동화 시키는 도구들의 집합
+패키지 설치, 업그레이드 , 구성 ,제거
+
+  패키지는 파일 아카이브와 다름
+  파일 아카이버
+  - 여러 파일을 하나의 아카이브 파일로 결합하여보다 쉽게 운송하거나 보관할 수있는 컴퓨터 프로그램
+  메타 데이터
+  - 다른 데이터에 관한 데이터 (또는 정보)
+  타르 (Tarball) 및 지퍼
+  유닉스 계열 플랫폼에서 소스 및 바이너리 배포에 일반적으로 사용된다.
+
+  <li>Dependency Problems</li>
+  실행 프로그램은 소스 코드와 라이브러리에서 파생된다.
+  make 프로세스에는 해당 파일 간의 모든 종속성에 대한 설명이 필요
+  깨지거나, 결함, 호환되지 않는 종속석으로 인해 프로그래밍 실수나 버그 발생
+  의존성 지옥
+    많은 의존성, 긴 의존성 체인, 충돌하는 종속성, 순환 의존성
+  버전 번호
+    종속성 문제를 부분적으로 해결, 명명 규칙이 일정하지 않음
+  요즘엔 아파치에서도 리파지토리에서 관리를 해주고 정형화 되어있음
+
+  <li>dpkg</li>
+  데비안 기반 시스템용 패키지 매니저
+  dpkg –l : List all packages installed on the system
+  dpkg –L package_name : List the files installed by a package
+  dpkg –S file_path : Search a package which contains the given file
+  dpkg –i package_deb_name.deb : Install a local package deb file
+  dpkg –r package_name : Remove a package
+
+  <li>apt-get</li>
+  우분투의 고급 패키징 도구 (APT) = Advanced Packaging Tool
+  서버 관리자용 명령 줄 도구
+
+  apt-get upgrade
+  설치된 패키지 업그레이드
+  최신버전의 파일을 가져옴
+
+  apt-get update
+  /etc/apt/source.list 파일에 정의된 저장소에서 APT패키지 색인을 갱신
+  버전을 저장소에 물어봄 최신 버전 인덱스를 보내줌 (리스트 인덱스를 체크함)
+
+  모든 활동은 /var/log/dpkg.log 에 기록된다.
+
+  <li>Repository</li>
+  APT는 APT 시스템 저장소를 사용
+  저장소란
+  -파일 모음과 색인
+  -배포를 통한 집중식 저장소
+  -저장소가 다르게 구조화 될 수 있음
+  -신원 인증하기 위해 GPG 키로 암호로 서명(GPG:GNU 프라이버시 가드)
+
+  <li>Ubuntu Repository</li>
+  /etc/apt/sources.list 우분투의 APT 시스템 저장소 구성
+  유형
+  Main 표준지원 무료 및 오픈소스 소프트웨어
+  Restricted 장치용 독점 드라이버
+  Universe 커뮤니티가 오픈 소스 소프트웨어를 무료로 유지 관리
+  Multiverse 저작권 또는법적 문제로 제한되는 소프트웨어
+
+  <hr></hr>
+
+  <li>Logging</li>
+  <blockquote cite="http://">
+    1.로그파일의 이해
+    시스템에 이상이 있거나 보안의 위험을 감지하기 위해서는 시스템에서 남겨지는 메시지를 확인해야한다.
+    모든 시스템에서 특정작업이 발생한 후에는 반드시 로그가 남겨지며 관리자는 이를 반드시 정기적으로 점검해야한다.
+    서버 보안문제 혹은 시스템 해킹시 이에 대한 1차적인 확인을 로그파일을 통해서 할 수 있습니다.
+    2. 로그종류
+    - 커널로그(klogd 데몬에 의해 생성됨)
+    - syslogd 데몬에 의해 생성되는 로그
+    3. 로그파일의 위치 및 특성
+    리눅스에서 시스템의 모든 로그는 /var/log 디렉토리에 의해 기록 및 관리되고 있고
+    /etc/syslog.conf 파일에서 시스템 로그파일들의 위치를 지정하고 있다.
+  </blockquote>
+
+  리눅스시스템에서 발생하는 많은 이벤트는 관리목적으로 기록되어야한다.
+  리눅스에는 syslog 라는 기능이 있어 모든 서비스나 시스템의 일부가 이러한 이벤트를 기록 할 수 있다.
+  (우분투의 rsyslog)
+  이벤트는 심각도(레벨) 또는 이벤트(facility)를 만난 서비스에 따라 선택될 수 있다.
+  메시지는 파일, 시스템 콘솔 또는 다른 시스템에서 실행되는 중앙 syslog서버로 이동할 수 있다.
+
+  rsyslog의 구성은 /etc/rsyslog.conf 및 /etc/rsyslog.d 에 있다
+
+  facility는 메시지 생성자이다. 즉 로그 생성 서비스
+  ex) One of auth, authpriv, cron, daemon, kern, lpr, mail, news, syslog, user, or local0 through local7
+
+  level은 메시지가의 우선순위 (로그 수준)
+  ex) debug, info, notice, warning, err, crit, alert, emerg
+
+  destination 은 로그생성서비스와 로그수준에 의해 선택된 메시지가 보내 질 곳을 나타낸다.
+  ex) 일반적으로 로그 파일 또는 장치 이름
+
+  <li>Reconfiguration of rsyslog</li>
+  rsyslog의 구성을 변경하는 경우에 rsyslog에 구성을 다시 읽도록 요청해야 함
+
+  rsyslog 프로세스에 SIGHUP(hang up) 신흐를 보내서 수행
+  kill -HUP /usr/bin/rsyslogd
+  다른 방법 : rsyslog의 init 스크립트 사용
+  service rsyslog start
+  서비스를 끊어도 데몬이라 재시작하게됨
+
+  <li>로그 검사</li>
+  때로는 주목할만한 활동을 위해 수동으로 로그 파일을 검사해야 할 때가 있습니다
+  로그는 일반 텍스트이므로 표준 텍스트 처리 도구를 사용하여 검사 할 수 있습니다
+  로그 파일 위치 /var/log
+
+  <li>로그 순환</li>
+  logrotate
+  리눅스내에서 시스템에 있는 모든 로그파일들을 관리할 수 있으며, 이들 로그파일들을
+  날짜를 지정하여 주기적으로 압축, 백업, 삭제, 메일로 보내는 등의 작업을 할 수 있도록 하여주는 기능
+
+
+  로그 파일들의 2 3 4 번째들 것들은 컴프레싱 되어있음
+
+  rsyslog 는 일반적으로 로그 파일이 제한없이 디스크 공간이 부족할때까지 증가하도록 허용합니다.
+  그 해결책으로 log rotation 사용
+  기존 로그 파일의 이름이 주기적으로 바뀌고 궁극적으로 삭제되는 방식
+  log-&gt 1.log -&gt; 2.log -&gt 3.log
+          log  -&gt 1,log -&gt 2.log
+
+  logrotate 는 crom 에 의해 매일 런 됨
+
+  logrotate 는 /etc/logrotate.conf (설정파일) 에서 구성 된다
+
+  <blockquote></blockquote>
+    </ul>
+</pre>

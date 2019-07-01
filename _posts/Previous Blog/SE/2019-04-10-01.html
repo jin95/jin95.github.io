@@ -1,0 +1,372 @@
+---
+layout: post
+title : "01장 ~ 02장"
+categories: [old]
+tags: []
+description: >
+---
+<pre><q cite="">
+  COTS = commercial off The-shelf =&gt; package Software
+  LOC : Liene Of code
+  MM : Man-Month (=PM)
+  FP : function Point (기능이 몇개냐에 따라 소프트웨어 크기를 결정)
+  Saas : software as a service(설치를 하지 않아도 됨 ex-아마존 로켓 클라우드)
+  IEEE : 전기 전자 기술자 협회
+  SQuaRE : Software product Quality Requirements and Evaluation
+  CMM : Capability Maturity Model(회사의 능력)
+  SQA : Software Quality Assurance
+  SWEBOK : Software engineering body of knowledge - IEEE & ACM
+  SDLC : software development life cycle
+  Stakeholder : 프로젝트에 관여하는 모든 사람
+  ISO26262 : 자동차 소프트웨어의 표준
+  TDD : Test-Driven-Development
+  Pair Programming : 함수 A를 짤때 두사람이 같이 코딩한다. 서로 회의하면서
+</q></pre>
+<h2>1. Introduction to Software Engineering</h2>
+<pre><ul><li><h4>1.1 Software</h4></li>
+    소프트웨어란 무엇인가 ?
+    Code : 함수안의 문장
+    Program : 프로그램
+    Software : 프로그램 + 문서(.java, javac..)
+
+    *소프트웨어의 특징
+    1 비가시성 - 눈에보이지 않는다(invisibility) -&gt; 버그가 눈에 보이지 않음
+    2 복잡성, 복합성(Complexity) - 소프트웨어에서만 이 특성을 가지는 것은 아니다. 더욱 소프트웨어분야서 복잡
+    3 순응(Conformity) - 요구 사항에 따라 수정이 가능
+    4 Changeability - 복제하기 쉬움
+    5 닳지 않는다
+
+    Type of software      300~1000 : LOC / MM
+    - custom software
+    - package software
+    - Embedded software
+
+    <li><h4>1.2 Why Software Engineering?</h4></li>
+    소프트웨어공학의 필요성
+
+    high cost (고비용)
+    소프트웨어 개발의 일반적인 생산성 300~1000 LOC/MM
+    소프트웨어 비용이 하드웨어비용보다 훨씬 비싸다.
+
+    project delay(개발 지연)
+    x축의 FP 갯수가 높을수록 개발이 지연된다. 제시간에 개발된것이 매우 적음
+
+    Low reliability(낮은 신뢰도)
+
+    Maintenance(유지보수)
+    유지보수비용은 개발비용보다 훨씬 높습니다.
+
+    <strong>[Software Crisis]</strong>
+    Fred Brooks, The Mythical Man Month
+    Silver bullet
+
+    소프트웨어 공학이라는 용어는 1968년과 1969년 NATO 회의에서 소프트웨어 위기를 논하기 위해 처음 제안했다.
+    소프트웨어 위기는 1960년대 크고 복잡한 시스템을 개발할 때 겪었던 어려움에 대한 이름이었습니다.
+    SW 개발에 대한 엔지니어링 방식의 채택은 SW 개발 비용을 줄이고 보다 안정적인 SW로 이어질 것이라고 제안되었습니다.
+    ex) 소프트웨어 버그에 의해서 발생한 사고 : 64비트 정수를 16비트 부호있는 정수로
+    변환하면서 오버플로우가 발생 -&gt; 아리안 5의 폭발
+    ex) Therac -25 사건 -&gt; 치사량의 방사선을 쏴서 사람을 사망에 이르게 함
+
+    <li><h4>1.3 소프트웨어 공학이란?</h4></li>
+    소프트웨어 개발,운영, 유지보수, 소멸에 대한 체계적인 접근 방법이라고 정의하고 있다.
+    by IEEE (전기 전자 기술자 협회)
+
+    엔지니어링, 과학 및 수학 원리와 방법을 경제적 인 품질의 소프트웨어 생산에 적용하는 법적인 적용
+    -와트 험프리
+
+    소프트웨어 문제
+    1 Scale
+    더 큰 SW프로젝트는 보다 공식적인 프로젝트 관리 및 개발 방법을 요구합니다.
+    SW 프로젝트 규모 (KLOC)
+    Small(≤10) / Medium(10~100) / Large(100~1,000 ) / Very large(≥ 1,000)
+
+    2 Quality and Productivity
+    ISO 9126, ISO/IEC 25010 에 따른 품질 속성
+    기능, 신뢰성, 유용성, 효율성, 유지 보수성, 이식성, 보안성, 호환성
+    SQuaRE = Software product Quality Requirements and Evaluation)
+    생산성은 LOC / MM 에 의함
+    ex) HWP 파일은 열리지 않는다 // Libre office(오픈소스)MS word는 열린다
+    호환성이 있다.
+
+    3 Consistency & Reproducibility(일관성 및 재현성)
+    많은 소프트웨어 프로젝트에 일관되게 그리고 반복적으로 적용 가능한 소프트웨어 공학 기술
+    cf) ISO 9001, CMM(Capability Maturity Model)
+
+    프로젝트 전체에 반복 적용되어 생산된 소프트웨어의 품질에 일관성이 있어야한다.
+    CMM - 일관성 위해 방법론 사용 권장
+    4 Changes
+    불가피한 변경 사항에 대한 적합성
+
+    <li><h4>1.4 How SE tackles the problems</h4></li>
+    1 소프트웨어 개발 프로세스
+    2 소프트웨어 품질보증(Verification, Validation, Testing)
+    SW회사 기획팀 - 선행팀 - 개발팀 - SQA팀 - 출시
+    3 프로젝트 관리
+    측정 항목 : 제품 측정 항목, 프로세스 측정 항목
+
+    <li><h4>1.5 SWEBOK</h4></li>
+    SWEBOK : Software engineering body of knowledge - IEEE & ACM
+
+</ul>
+
+<h2>2. 프로세스와 방법론</h2>
+<pre>
+  소프트웨어 3가지 -&gt; 사람, 기술, 절차
+  소프트웨어 코드 수정 -&gt; 소프트웨어 프로세스라고 할 수 없음
+
+  <ul>
+    <li><h4>2.1 소프트웨어 프로세스</h4></li>
+    소프트웨어 프로세스 :
+    소프트웨어 시스템을 개발하는 데 필요한 일련의 구조화 된 집합
+    <img src="../../images/SE/se_process.png" alt="" width="500" height="350">
+
+    <strong>소프트웨어 프로세스와 소프트웨어 개발 프로세스 구분</strong>
+
+    Software development process(소트프웨어 개발 프로세스)
+    Software development model(소프트웨어 개발 모델)
+    Software development life cycle (SDLC) (소프트웨어 개발 수명주기)
+    위 3개는 같은말
+
+    소프트웨어 개발 프로세스 : 일련의 단계 소프트웨어가 계획 단계에서부터
+    제공 단계까지 단계적으로 진행됩니다.
+    소프트웨어 프로젝트의 성격에 따라 선택
+
+    왜?
+    서로 다른 활동의 순서를 분명히 하기 위해 순서를 정해야함
+
+
+    # 요구 분석과 정의 - 시스템 설계 - 프로그램 설계 - 프로그램의 작성(코딩)- 테스팅(단위테스팅,통합테스팅,시스템테스팅) - 시스템 설치 - 유지 보수
+
+
+    전통적 소프트웨어 액티비티
+    -Requirement engineering
+    추출 분석과모델링 명세 검증 변경추적관리
+
+    -Design(시스템의 내부구조 및 조직 설계)
+    아키텍쳐 인터페이스 모듈상세설계 사용자인터페이스 데이터베이스
+
+    -Implementation
+    누구나 코드를 쉽게 이해하고 사용하도록, 테스트하기 쉬운 구조
+    내부:코딩표준//외부:의료/자동차 규격 ex)ISO26262
+
+    Verification & Validation
+    Verification : 확인(설계대로 잘 만들었는지. 주로 개발자가 함)
+    Validation : 검증(주문한 사람이 원하는 대로 만들었는지. 개발자,사용자,주문자 다함)
+    # System testing(Verification) =비슷 Acceptance testing(Validation)
+
+    -Maintenance
+    버그리포트 기능요청 오류수정 새기능추가 새로운환경에이식
+    <li><h4>2.2 바람직한 프로세스의 특징</h4></li>
+    <ol>
+      <li>Predictability</li>
+      예전의 프로세스 경험에 의해 예측 가능함, 데이터 축적이 매우 중요
+      그래프를 보면 변수가 일정하게 유지된다는 것을 예측가능
+      <li>Easy to test & Easy to maintain</li>
+      테스트 및 유지보수 단계에서 비용절감(테스팅이 50프로)
+      <li>Coping with Change(변경용이성)</li>
+      변경은 항상 일어나므로 변경을 쉽게 다룰 수 있는 프로세스가 요망된다.
+      <li>Low cost ing Defect Correction(결함제거용이성)</li>
+      일찍오류가 발생할수록 비용이 적다. 가능하면 Defect를 초기단계에 잡아야함
+      모든 단계에서 모니터링 결함이 필요함
+   </ol>
+   <li><h4>2.3 소프트웨어 개발 프로세스</h4></li>
+   1~6번은 폭포수 모델
+   7번은 에자일 모델
+   <ol>
+     <li>폭포수 모델</li>
+     Code and fix와 차이점, 충분히 앞단계에서 준비시간이 많음(1950년 코드앤픽스 시절엔 혁신)
+     요구분석,설계,구현,테스팅 등의 작업을 순서대로 쭉 해나가는 프로세스이다.
+     병행되어 진행되거나 거슬러 반복 진행되는 경우가 없다
+
+     <img src="../../images/SE/se_waterfall.png" alt="" width="550" height="350">
+     첫번째 단계에서 product 요구사항 문서, 두번째 단계 소프트웨어 아키텍쳐, 세번째 단계 소프트웨어
+
+     장점
+     1. <strong>각 단계가 끝난 후에 나와야 할 결과물(deliveralbe)을 명확히 정의하여야 한다.</strong>
+     결과물을 정확히 정의하여 구조가 표준화되어 있다면 품질의 향상에 크게 도움이 된다.
+     2. 작업이 일렬로 나열되어 있어 직능 중심의 프로젝트 조직이 가능하다는 점
+     순차적이고 , 원샷(one-shot) 소프트웨어 개별 프로세스 모델
+     3. 크고 복잡한 오래 지속되는 프로젝트에 적합하다.
+
+     단점
+     1. 설계와 코딩 및 테스팅 지연시킬 우려
+     처음 단계들이 지나치게 강조되므로 불필요한 문서들을 작성하는데 노력 소모
+     과도한 문서 작업
+     2. 각 단계와 일정이 엄격하여 요구 변경을 수용하기 어려움
+     시스템의 요구가 설계단계로 가기전에 동결되기 때문에
+     중간 단게에 요구사항이 계속 변경되는 것은 대응하기 어렵다
+     융통성이 없다
+
+     정리하자면 전통적인 폭포수 모형을 따를 경우 재사용의 기회가 줄어드는 단점이 있고,
+     시스템을 한번의 계획과 실행으로 완성시키기때문에 결과를 정비하고 개선시키는 기회가 없다.
+     일정에 융통성이 없으며 이전 단계로의 회귀, 반복이 계속 된다면 소요 자원이 계속 증가
+     무엇보다 중요한 단점은 최종 단계까지 가 보아야 결과가 나온다는 점
+     결론적으로 이 모델은 요구사항을 이미 잘 알고 있는 문제나 연구 중심의 문제를 다루는 소프트웨어
+     개발에 적합하다. 또한 생명주기 전반에 걸쳐 변경이나 진화가 예상되지 않는 비교적 위험이 적은 프로젝트에 적합하다.
+     (요구 분석이 명확한 규모가 큰 소프트웨어에 적합)
+
+     <li>프로토타이핑 모델(Rapid Prototyping Model)</li>
+     <img src="../../images/SE/se_prototype.png" alt="" width="550" height="350">
+     프로토타입(시스템의 일부 혹은 시스템의 모형이 될 만한 것을 만드는 과정)
+     Rapid Prototyping Model(사용자와 개발자의 소통)
+     -&gt; 피드백을 받음, 사용자 요구가 불투명 할 때 , 혁신적인 기술이 사용시 적합
+
+     진화적 프로토타입 (프로토 타입을 발전시켜 정한 수준까지 만들어 나감)
+     요구사항 파악 프로토타입 (단점은 다 개발된것으로 생각 할 수 있는 오해)
+     쓰고버리는
+
+     장점 : 프로토 타입은 발주자나 개발자에게 공동의 참조 모델을 제공
+     단점 : 발주자가 프로토타입이 최종결과라 믿고 곧 소프트웨어 개발이 완성되리라고 오해
+
+
+   <li>진화적 모델(Evolutionary Model) - 탐구적인 프로젝트에 적합</li>
+   기본적인 아이디어는 사용자에게 시스템을 조기에 경험하게 하고 출시를 빠르게 하기 위하여
+   조금씩 점증적으로 개발하는 것, 시스템을 여러 번 나누어 릴리스 하는 방법
+
+   점증적방법 : 기능을 추가
+   반복적방법 : 같은 기능이지만 성능을 향상한다든지 기능을 개선
+
+   유전자 배열과 같이 아직 알려지지 않은 것을 발견하려는 목적의 연구를 위한 소포트웨어에 적합
+   지능형시스템,임베디드 시스템에 적합 반면에 일정이 정확히 예측되어야 하는 프로젝트에는 부적합
+
+   프로토타입/진화적 모델의
+   장점 : 피드백을 즉시 할 수 있다.
+   단점 : 계획하기가 어렵다 (ex)내부사이클 반복횟수나, 릴리스 횟수)
+
+   <li>나선형 모델</li>
+   위험 관리를 위한 독특한 프로세스이다.
+   계획수립 - 위험분석 - 개발 - 평가
+   대규모 시스템의 소프트웨어를 개발하는데 가장 적합한 방법.
+   특히 개발자나 사용자가 각 확장 단계에서 발생될 위험에 대한 이해와 대책이 가능하다.
+
+   장점 : 위험 감소, 기능이 추가될 수 있음, 비선형적이며 반복적이여서 강인성이 높음
+   단점 : 프로세스의 전체 성공은 위험 분석에 달려있다.
+
+   <li>V 모델</li>
+   폭포수 모델에 시스템 검증과 테스트 작업을 강조한 것이다.
+   세부적인 테스팅 프로세스로 구성되어 신뢰도 높은 시스템을 개발하는데 효과적인 것으로 알려져 있다.
+
+   참고) 슈어소프트테크 - 소프트웨어 테스크 전문기업  ... ISO26262 - 자동차 소프트웨어의 표준
+
+   V모델의 장점은 모든 단계에 검증과 확인 과정이 있어 오류를 줄일 수 있다는 것이다.
+   무엇보다도 높은 신뢰성이 필요한 응용분야, 예를 들면 의료 제어 시스템이나 원전 제어 시스템의 개발 같은 곳에 적합하다.
+   단점은 생명주기의 반복을 허용하지 않아 번경을 다루기가 쉽지 않다. 작업이 종료되고 리뷰 후에는 관련된 결과물이 동결된다.
+
+   <li>Unified 프로세스</li>
+   The (Rational) Unified Process (RUP)
+   반복적이고 점증적인 UML 기반 프로세스
+
+   plan and document 모델들 1~6 - 공통점 : 주의 깊은 계획, 요구사항분석 및 테스트 문서화 철저히, 계획과 진행과정을 잘 설계
+
+   <li>Agile Process(에자일 프로세스)</li>
+   <strong>프로그램 및 사용자와의 커뮤니케이션 중점</strong>
+   문서 말고 동작하는 소프트웨어로 하자
+   계약 베이스로 협상하지말고 계속 만나서 이야기하자
+   주기적으로 plan을 재계획, 짧은 주기, 자주 출시
+
+   Kent Beck(켄트백) - TDD : Test Driven Development 테스트 중심 개발
+   Martin Fowler(마틴 파울러) : REfactoring
+
+   <strong>
+   1. 절차와 도구보다 개인과 소통을 중요시 한다.
+   2. 잘 쓴 문서보다는 실행되는 소프트웨어에 더 가치를 둔다.
+   3. 계약 절충보다는 고객 협력을 더 중요하게 여긴다.
+   4. 계획을 따라 하는 것보다 변경에 잘 대응하는 것을 중요하게 여긴다.
+  </strong>
+  가장 중요한 원리는 사용자가 적극적으로 프로젝트에 참여한다는 점
+
+  변동 가능성 있는요구 / 점증적 계획 / 지속적인 사용자와의 커뮤니케이션 / 지속적인 리뷰와 테스팅 / 설치 가능한 프로덕트
+   </ol>
+
+   적절한 모델을 선택하면 프로젝트의 성공을 보장할 수 있다.
+   적절한 모델을 선택하는 요소에는 요구사항에 대한 이해 수준 ex 잘이해되는건 전통적모델, 덜이해되면 에자일
+   고객과의 상호 작용 가능여부, 프로젝트의 예상 수명/일정 제약, 관련된 사람들의 전문성 수준
+
+   <li>2.4 지원 프로세스(Umbrella Process)</li>
+   <img src="../../images/SE/se_umbrella.png" alt="" width="550" height="350">
+
+   <li>2.5.1 구조적 방법론</li>
+   구조 분석 및 설계 방법
+   데이터 흐름도 (DFD)
+
+   <li>2.5.2 객체지향 방법론</li>
+   객체 지향 분석 및 설계 방법
+   UML (Unified Modeling Language)
+
+   <li>2.5.3 에자일 방법론</li>
+   애자일 방법은 진화적 모델이나 나선형 모델처럼 반복적이고 점증적인 프로세스를 채택한다.
+   애자일 프로세스는 짧은 반복 주기를 반복하며 점증적으로 자주 출시한다. 반복 주기 안에서
+   각 단계에 대한 이름은 다르지만 요구분석,설계,구현,통합,테스팅,설치 작업까지 거치게 된다.
+   완벽한 문서 작성보다는 실행되는 소프트웨어에 더 가치를 둔다.
+   <strong>Agile methods</strong>
+   <ol>
+     <li>XP(extreme programming)</li>
+     소규모 개발 조직이 불확실하고 변경이 많은 요구를 접하였을때 적절한 에자일 방법이다.
+     TDD (test-driven development) : 소프트웨어가 있다고 가정하고, test코드 작성하다가 컴파일 에러가 나면 그때
+     내가 만들 함수를 개발
+     Pair programming : 함수 A를 구현할때 두사람이 회의하면서 같이 코딩함
+     CI (Continuous integration) : integration 보다는 build라고 이해
+     기능 하나만 만들때에 그것을 추가하고 build, 매 기능 추가시 build
+     원래 전통적인 프로세스에서는 모든 기능 개발을 마치고 build(빌드를 처음부터 계속하기때문에 오류를 일찍 발견 가능함)
+
+     <li>Scrum</li>
+     에자일 방법론의 필수요소로서 약속된 시간에 서서 어제는 무슨일을 했는지 오늘은 무슨일을 할 것인지 각자 이야기하고
+     이를 바탕으로 마지막에 스크럼 마스터가 전체적인 진행상황을 점검, 서로의 작업 상황을 최소 단위로 공유하면서 일을 효율적으로
+     진행하기 위함
+
+     스크럼 용어
+     Scrum(팀/방법론) : (the smallest) team
+     Sprint(주기) : a cycle of SW development
+     Product backlog(할 일 목록)
+     A catalogue of requirements (or called stories) with priorities, described in customer’s terminologies
+     Sprint backlog(진행 목록) : Work status board
+     Daily scrum(일일 미팅) : daily meeting
+     Sprint demo(SW데모) : the end of a sprint
+     Sprint retrospective(회고)
+     Slack time between sprints(휴식)
+
+     Methods and tools in Android App development
+     요구사항명세서에 요구사항ID를 적어 세부화시킴
+     [ Android component-level Architecture Diagram ]
+     인트라앱 - 인터앱 - 인트라 컴포넌트 - 인터 컴포넌트 순서
+   </ol>
+</ul>
+소프트웨어의 특징: 복잡성,순응성,변화성,비가시성
+
+소프트웨어공학에서 해결하려고 하는문제 : 고비용, 개발지연, 낮은 신뢰도, 유지보수
+
+소프트웨어공학이란 용어는 NATO회의에서 소프트웨어 위기를 논의하기 위해 처음 제안했다
+소프트웨어 위기는 1960년대 크고 복잡한 시스템을 개발할 때 겪었던 어려움에 대한 이름이다.
+
+소프트웨어 공학 이란 ? 소프트웨어 개발, 운영, 유지 보수 및 폐기에 대한 체계적인 접근 방식
+
+소프트웨어 문제 : 크기, 품질 및 생산성, 일관성 및 재현성, 변경
+
+SWEBOK = software engineering body of knowledge
+
+소프트웨어 프로세스가 아닌것: 정해진 절차없이 code and fix를 반복하는것
+
+소프트웨어 프로세스 정의: 소프트웨어 시스템을 구축하기 위하여 수행되는 작업 단계,
+                        각 단계별 잘 정의된 작업 수행
+
+바람직한 프로세스 특징 : 예측가능성, 테스팅 및 유지보수 편이성, 변경 용이성, 결함 제거 용이성
+
+폭포수, 프로토타입, 진화적, 나선형, V모델, unified모델, 에자일 모델
+
+에자일 모델의 특징 :
+절차와 도구보다 개인과의 소통 중시
+잘 쓴 문서보다 실행되는 소프트웨어에 가치를 둔다
+계약 절충보다 고객협력을 중시
+계획을 따라하는 것보다 변경대응하는 것을 중시
+
+에자일방법 5가지
+Scrum
+XP
+TDD
+Pair Programming
+CI
+
+
+
+
+</pre>

@@ -1,0 +1,105 @@
+---
+layout: post
+title: "homework 01_01"
+categories: [old]
+tags: []
+description: >
+---
+    <h1>file copy 프로그램 구현</h1>
+    <h3>과제 개요</h3>
+    2개의 file 이름을 명령 인수로 받아서 첫번째 파일로부터 두번재 파일로 복사하는 프로그램을 POSIX API와 Windows API를 이용하여 작성하시오.</br>
+    첫번째 파일이 없거나, 두번째 파일이 이미 존재할 경우 적절한 메시지를 출력하고 실행을 중지하시오.</br>
+<hr>
+</hr>
+    <h4>1. POSIX API</h4>
+    <div class="language-bash highlighter-rouge">
+    <pre class="highlight"><code>
+    #include &lt;stdio.h&gt;
+    #include &lt;stdlib.h&gt;
+    #include &lt;sys/stat.h&gt;
+    #include &lt;unistd.h&gt;
+    #include &lt;fcntl.h&gt;
+
+    int main(int argc, char* argv[]){
+
+        char buf[2048];
+        int fd_in, fd_out;
+        ssize_t bytes_read, bytes_write;
+        //wrong input
+        if(argc != 3){
+            printf("error! \nwrite cp filename1 filename2\n");
+            return 1;
+        }
+        //input file
+        fd_in = open(argv[1],O_RDONLY);
+        if(fd_in == -1){
+            perror("open error\n");
+            return 2;
+        }
+        //create output file
+        fd_out = open(argv[2],O_WRONLY | O_CREAT | O_EXCL, 0644);
+    //chomd 0644, enable to write,read   O_EXCL 인자는 O_CREAT와 함께 쓰이면 중복검사 기능을 수행한다.
+        if(fd_out == -1){
+            perror("copy failed! check existing filename\n");
+            return 3;
+        }
+        //copy process
+        while((bytes_read = read(fd_in,&buf,2048)) &gt; 0 ){ // argv[1]'s file bytes
+            bytes_write = write(fd_out,&buf,(ssize_t)bytes_read);
+            if(bytes_write != bytes_read){
+                perror("write error\n");
+                return 4;
+            }
+        }
+
+        close(fd_in);
+        close(fd_out);
+        return 0;
+    }
+  </code></pre>
+</div>
+<hr>
+</hr>
+  <pre>
+    <p> 헤더 파일 </p>
+    #include &lt;sys/stat.h&gt; 파일 정보 (통계분석) 등.</br>
+    #include &lt;sys/types.h&gt; 어떤 곳에서든지 사용되는 다양한 데이터 유형.</br>
+    #include &lt;unistd.h&gt; 다양한 필수 POSIX 함수와 상수.</br>
+      main(int argc , char* argv[])
+      argc : arguments count로서 main 함수에 전달된 인자의 갯수
+      argv : arguments vector로서 가변 문자열 , 첫번째 문자열은 프로그램의 실행경로로 항상 고정
+
+
+    -------------------------POSIX API----------------------
+
+      open()
+      #include < sys / stat.h >
+      #include < fcntl.h >
+
+      int open (const char * path , int oflag , ...);
+
+
+      oflag :
+      O_RDONLY
+      읽기 전용으로 엽니 다.
+      O_WRONLY
+      쓰기 전용으로 엽니 다.
+      O_RDWR
+      읽기 및 쓰기 용으로 엽니 다. 이 플래그가 FIFO에 적용되면 결과는 정의되지 않습니다.
+
+    -----------------------명령어순서---------------------
+      gcc -Wall -o [출력파일명] [컴파일파일명]
+      ./[출력파일명] srcFile dstFile
+
+      복사 완료!
+  </pre>
+  <hr>
+</hr>
+  <blockquote style="color: #B29B35">
+    https://ddiri01.tistory.com/76</br>
+    http://neosrtos.com/docs/posix_api/sysstat.html</br>
+    http://neosrtos.com/docs/posix_api/unistd.html</br>
+    http://theeye.pe.kr/archives/938</br>
+    http://linux.die.net/man/3/read</br>
+    http://www.techytalk.info/linux-system-programming-open-file-read-file-and-write-file/</br>
+  </blockquote>

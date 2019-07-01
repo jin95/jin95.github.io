@@ -19,7 +19,7 @@ baseurl:               ''
 lang:                  en
 
 # The title of your blog. Used in the sidebar and the browser tab.
-title:                 SeungJin
+title:                 Seung Jin Choi
 
 # A short description (~150 chars) of the page used for the meta description tag.
 # Can use markdown, but no more than one paragraph (enforced by `>`)
@@ -52,17 +52,17 @@ author:
   # twitter:             <username>
 
 # Add links to the sidebar.
-menu:
-  - title:             이전 블로그
-    url:               /old/
-  - title:             IoT
-    url:               /iot/
-  - title:             Network
-    url:               /network/
-  - title:             Development
-    url:               /development/
-  - title:             About
-    url:               /about/
+# menu:
+#   - title:             이전 블로그 내용
+#     url:               /old/
+#   - title:             IoT
+#     url:               /iot/
+#   - title:             Network
+#     url:               /network/
+#   - title:             Development
+#     url:               /development/
+#   - title:             About
+#     url:               /about/
 
 # Add links to the footer.
 # Typically you'll want to link to your cookie- or privacy policy (if appliable), etc..

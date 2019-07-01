@@ -2,24 +2,14 @@
 # Must be the same as `author` in `_config.yml`.
 # Change `author1` to your shortname.
 author1:
-  name:              <firstname> <lastname>
-  email:             <mail@domain.tld>
+  name:                SeungJin Choi
+  email:               idmania153@gmail.com
 
   # Used at the bottom of each page and at the top of the `about` layout
   # Markdown enabled, can use multiple paragraphs (enabled by `|`)
   about:             |
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-
-    Open `_data/authors.yml` to edit this text.
-
-    [Download Free][kit]
-    -- or --
-    [Buy PRO][buy]
-
-    [kit]: https://github.com/qwtel/hydejack-starter-kit/archive/v8.1.1.zip
-    [buy]: https://app.simplegoods.co/i/NATYVLYT
+    안녕하세요. 전남대학교 소프트웨어공학과에 전공중인 최승진입니다.
+    저는 웹 개발에 관심이 많고, 무작정 정리하는 것을 좋아합니다.
 
   # This photo will be used in the about section
   picture:

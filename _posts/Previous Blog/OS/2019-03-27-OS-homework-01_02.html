@@ -1,0 +1,87 @@
+---
+layout: post
+title: "homework 01_02"
+categories: [old]
+tags: []
+description: >
+---
+  <h1>file copy 프로그램 구현</h1>
+  <hr>
+  </hr>
+  <h4>2. Window API</h4>
+  <div class="language-bash highlighter-rouge">
+  <h5>Code</h5>
+  <pre class="highlight"><code>
+#include &lt;stdio.h&gt;
+#include &lt;windows.h&gt;
+
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPreInstance, LPSTR lpCmdLine, int nCmdShow) {
+	HANDLE handle;
+	DWORD FileSize;
+	DWORD nNumberOfBytesToRead;
+	char str[300000];
+
+	//성공하면 파일의 핸들을 반환, 실패하면 INVALID_HANDLE_VALUE 반환
+	handle = CreateFile("D:/Test/File1.txt", GENERIC_READ, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+	//CreateFie
+	if (handle == INVALID_HANDLE_VALUE) {
+		printf("Error! Can't open File1\n");
+		return -1;
+	}
+	//파일1의 크기를 반환
+	FileSize = GetFileSize(handle, NULL);
+	ReadFile(handle, str, FileSize, &nNumberOfBytesToRead, NULL);
+	CloseHandle(handle);
+
+	//복사할 위치에 화일을 생성후 핸들을 돌려 받는다.
+	handle = CreateFile("D:/Test/File2.txt",GENERIC_WRITE, 0, NULL, CREATE_NEW, FILE_ATTRIBUTE_NORMAL, NULL);
+	if (handle == INVALID_HANDLE_VALUE) {
+		printf("Error! File2 Already Exists !\n");
+		return -1;
+	}
+	WriteFile(handle, str, FileSize, &nNumberOfBytesToRead, NULL);
+	CloseHandle(handle);
+	printf("Copy Success !!\n");
+	return 0;
+}
+</code></pre>
+<hr>
+</hr>
+
+  HINSTANCE hInstance : 현재 실행되고 있는 프로그램의 인스턴스 핸들
+  HINSTANCE hPreInstance : 바로 앞에 실행된 프로그램의 인스턴스 핸들. 통상
+  LPSTR lpCmdLine : 명령행 인자. main 함수의 argv에 해당
+  int nCmdShow : 윈도우를 보여주는 형태의 플래그
+
+  일반적인 콘솔 앱과는 달리 main 함수 대신 WinMain이라는 함수가 있다.
+  콘솔 앱에서 main함수와 같은 프로그램의 진입점(entry point)역할을 한다.
+  WINAPI라고 되어 있는 부분은 해당 함수의 호출 규약(calling convention)을 규정해주는 구문이다.
+  호출 규약을 지정하지 않으면 C 호출 규약이 기본값으로 지정되게 된다. 윈도우즈 응용프로그램에서는
+   WINAPI 호출규약을 지정해야 합니다.
+</div>
+<pre>
+  <hr>
+  </hr>
+CreateFile 매개변수
+
+HANDLE WINAPI CreateFile(
+
+  __in      LPCTSTR lpFileName, //열고자하는 파일 이름
+
+  __in      DWORD dwDesiredAccess, //접근 방법 명시, 일반적으로 GENERIC_READ, GENERIC_WRITE
+
+  __in      DWORD dwShareMode, //0개체 공유 방식 지정, 0을 지정하면 공유할 수 없는 상태가 됨.
+
+  __in_opt  LPSECURITY_ATTRIBUTES lpSecurityAttributes,
+
+  __in      DWORD dwCreationDisposition, //파일 생성방식 명시, CREATE_ALWAYS : 새로운 파일생성, OPEN_EXISTING : 파일이 존재하면 연다.
+//만약 파일이나 장치가 존재하지 않으면, 에러코드로 ERROR_FILE_NOT_FOUND(2) ...
+
+  __in      DWORD dwFlagsAndAttributes, //파일의 기타속성
+
+  __in_opt  HANDLE hTemplateFile
+
+);</pre>
+<hr>
+</hr>
+  <blockquote style="color: #B29B35" cite="http://winapi.freetechsecrets.com/win32/WIN32CreateFile.html">참고 : http://winapi.freetechsecrets.com/win32/WIN32CreateFile.html</blockquote>
