@@ -1,7 +1,7 @@
 ---
 layout: list
-title: Hydejack
-slug: hydejack
+title: IoT
+slug: IoT
 menu: true
 order: 1
 description: >

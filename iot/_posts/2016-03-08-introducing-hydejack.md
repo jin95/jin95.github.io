@@ -1,0 +1,68 @@
+---
+layout: post
+title : "04 AccessControl"
+---
+<h1>Linux</h1>
+<h2>04 Access Control</h2>
+<pre>
+  <ul>
+    <li>Change Ownership</li>
+    <code>$chown owner file/dirname</code>
+
+    <strong>Only root</strong> can change the ownership
+
+    ex) chomod u+x,go+w test.bat
+    사용자에게 실행권한 추가, 그룹과 others에 write 권한 추가이다.
+
+    <li>Change Group Ownership</li>
+    <code>$chgrp group file/dirname</code>
+    <strong>Only users included in the group or root</strong> can change the group ownership
+
+    <li>Recursive modification</li>
+    <strong>-R</strong>옵션을 사용하여 서브디렉토리 및 하위 디렉토리및파일의 권한과 소유를 바꿀수 있다.
+    <code>$chgrp -R dsm dsm-work</code>
+    dsm-work디렉토리의 그룹소유가 바뀐다. dsm-work 디렉토리아래에 있는 모든 contents(하위디렉토리및파일)가 바뀐다
+
+    <li>Recursively modifying permissions of subdirectories</li>
+    디렉토리의 파일 항목을 읽으려면 디렉토리에 실행 권한과 읽기 권한이 있어야 한다.
+    그래서 명령어 chmod -R u+x name 을 입력하면 의도치 않게 name 디렉토리 하위에 있는
+    파일들이 실행권한을 얻게된다.
+    디렉토리 내에 파일에는 x권한을 주지 않고 디렉토리들에만 x권한을 주고 싶을때 :
+    chmod -R u+X name (X 이다. 대문자 X)
+
+    <li>Special file permission</li>
+    Setuid : Set user-ID on execution --chmod u+s name
+    Setgid : Set group-ID on execution --chmod g+s group_dir
+    Sticky bit : Restricted deletion flag --chmod o+t temp
+
+    <li>setuid:special file permission</li>
+    setuid가설정된 파일을 수행하는 프로세스는 파일 소유자의 권한을 얻는다
+
+    주로 setuid 는 루트소유 파일에 접근할수 있는 루트권한을 얻기위해서 사용된다.
+    ex)passwd 명령어가 수행되는동안 사용자는 루트권한을 획득한다.
+    SetUID가 설정된 파일을 실행할 때 일시적으로 파일 소유자의 권한을 얻어 실행할 수 있도록 함
+    가장 대표적인예로 /usr/bin/passwd 파일이다. 이 파일은 계정의 비빌먼호를 변경할 수 있도록 하는 명령어 실행 파일로
+    /etc/passwd 로 접근하여 비밀번호를 변경하도록 함. 실제 /etc/passwd의 권한은 파일 소유주인 root만이 변경가능하도록
+    설정되어 있다. 만약에 /usr/bin/passwd 에 setuid가 적용되어있지 않는다면 일반 사용자들은 항상 관리자로 거쳐
+    자신의 비밀번호를 변경해야하는 번거로움이 생긴다.
+    그래서 악의적으로 setuid를 사용할 수 있게 된다.(backdoor)
+
+    <li>setgid:special file permission</li>
+    디렉토리에 setgid권한이 있으면 디렉토리 내에서 작성된 파일이 디렉토리의 동일한
+    그룹 소유권을 획득한다.
+
+    <li>Sticky:special permission</li>
+    /tmp 디렉토리는 모든 사람이 임시 파일을 만들 수 있도록 설정되어야한다.
+    그러나 이는 일반적으로 누구나 파일을 삭제할 수 있음을 의미한다.
+    파일의 소유자 또는 디렉토리 소유자 만이 sticky 디렉토리에서 삭제 가능하다. "t"로 표현됨
+    sticky-bit로 설정된 디렉토리는 모든 사용자가 write가능.
+    하지만 삭제할수있는권한 root와 해당사용자만 가능
+
+    <li>umask command</li>
+    새 디렉토리나 파일을 만들때 초기 사용 권한이 부여된다.
+    그 값을 umask를 사용하여 초기 사용 권한 설정
+    666 (rw- rw- rw-) for files
+    777 (rwx rwx rwx ) for directories
+    # Example : umask 022
+    – File creation : 666 – 022 = 644 (rw- r-- r--)
+    – Directory creation : 777 – 022 = 755 (rwx r-x r-x)

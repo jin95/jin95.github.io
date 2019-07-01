@@ -33,9 +33,10 @@ author1:
   # Comment/uncommet to show/hide
   # Rearrange to change the order in which they appear
   social:
-    twitter:         <username>
-    github:          <username>
-    # email:           <mail@domain.tld>
+
+    github:          jin95
+    email:           idmania153@gmail.com
+    instagram:       jin.______.95
     # rss:             https://<url>/feed.xml
     # facebook:        <username>
     # google:          <number>
@@ -46,7 +47,7 @@ author1:
     # spotify:         <user>/<number>
     # soundcloud:      <username>
     # lastfm:          <username>
-    # instagram:       <username>
+
     # flickr:          <string@string>
     # 500px:           <username>
     # dribbble:        <username>
