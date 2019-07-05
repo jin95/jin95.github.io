@@ -29,7 +29,7 @@ description:           >
 
 # A shorter description for the sidebar.
 tagline:               >
-  전남대학교 재학중인 학생입니다.
+  2019년 현재 전남대학교에 재학중입니다.
   나의 홈페이지를 만들고 싶습니다.
 
 # A list of keywords for your blog
@@ -87,12 +87,12 @@ paginate_path:         /blog/page-:num/
 
 # Sidebar image and theme color of the site.
 accent_image:          /assets/img/space.jpg
-accent_color:          rgb(79,177,186)
+accent_color:          '#29088A'
 
 # This is used for the `theme-color` meta tag,
 # which changes the background color of the browser UI in certain browsers.
 # Defaults to `accent_color`.
-theme_color:           rgb(25,55,71)
+theme_color:           '#29088A'
 
 # The string encoding which fonts to fetch from Google Fonts.
 # See: <https://hydejack.com/docs/configuration/>
@@ -110,9 +110,9 @@ defaults:
   - scope:
       path:            hyde
     values:
-      accent_color:    rgb(38,139,210)
+      accent_color:    '#29088A'
       accent_image:
-        background:    rgb(32,32,32)
+        background:    '#29088A'
         overlay:       false
 
   # `jekyll-seo-tag` will mark collection outputs as `BlogPosting`,
