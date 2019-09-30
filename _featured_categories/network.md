@@ -1,7 +1,7 @@
 ---
 layout: list
 title: 네트워크프로그래밍
-slug: network programming
+slug: networkprogramming
 menu: true
 order: 2
 description: >

@@ -52,15 +52,17 @@ author:
   # twitter:             <username>
 
 # Add links to the sidebar.
-# menu:
-#   - title:             Previous Blog
-#     url:               /old/
-#   - title:             IoT
-#     url:               /iot/
-#   - title:             Network
-#     url:               /network/
-#   - title:             Development
-#     url:               /development/
+menu:
+  - title:             Previous Blog
+    url:               /old/
+  - title:             컴퓨터네트워크
+    url:               /1_computernetwork/
+  - title:             네트워크프로그래밍
+    url:               /2_networkprogramming/
+  - title:             알고리즘
+    url:               /3_algorithm/
+  - title:             임베디드소프트웨어
+    url:               /4_embedded/
 
 
 # Add links to the footer.
