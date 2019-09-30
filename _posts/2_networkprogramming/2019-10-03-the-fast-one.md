@@ -3,7 +3,7 @@ layout: post
 title: The Fast One (v5) 1
 description: >
   네트워크 태그 테스트 포스팅입니다.
-categories: [2_networkprogramming]
+categories: [networkprogramming]
 tags:      
 ---
 네트워크프로그래밍1
