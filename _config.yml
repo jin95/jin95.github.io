@@ -52,15 +52,15 @@ author:
   # twitter:             <username>
 
 # Add links to the sidebar.
-menu:
-  - title:             Previous Blog
-    url:               /old/
-  - title:             IoT
-    url:               /iot/
-  - title:             Network
-    url:               /network/
-  - title:             Development
-    url:               /development/
+# menu:
+#   - title:             Previous Blog
+#     url:               /old/
+#   - title:             IoT
+#     url:               /iot/
+#   - title:             Network
+#     url:               /network/
+#   - title:             Development
+#     url:               /development/
 
 
 # Add links to the footer.

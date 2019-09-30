@@ -1,9 +1,9 @@
 ---
 layout: list
-title: Network
-slug: Network
+title: 네트워크프로그래밍
+slug: network programming
 menu: true
-order: 3
+order: 2
 description: >
     네트워크 관련 내용입니다.
 

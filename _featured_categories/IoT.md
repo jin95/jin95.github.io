@@ -3,7 +3,7 @@ layout: list
 title: IoT
 slug: IoT
 menu: true
-order: 2
+order: 3
 description: >
     IoT(=Internet Of Things) 관련 내용을 포스팅 할 예정입니다.
 
