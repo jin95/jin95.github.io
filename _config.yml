@@ -58,7 +58,7 @@ menu:
   - title:             컴퓨터네트워크
     url:               /iot/
   - title:             네트워크프로그래밍
-    url:               /2_networkprogramming/
+    url:               /networkprogramming/
   - title:             알고리즘
     url:               /3_algorithm/
   - title:             임베디드소프트웨어
