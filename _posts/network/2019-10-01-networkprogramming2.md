@@ -1,12 +1,12 @@
 ---
 layout: post
-title: The Fast One (v5) 2
+title: The Fast One (v5) 3
 description: >
   네트워크 태그 테스트 포스팅입니다.
-categories: [Network]
-tags:       [Network]
+categories:
+tags:      
 ---
-네트워크프로그래밍2
+네트워크프로그래밍3
 There are multiple ways of installing Hydejack.
 The easiest and cleanest way is [via the Starter Kit](#via-starter-kit).
 Alternatively, you can use the [Ruby gem](#via-gem).
